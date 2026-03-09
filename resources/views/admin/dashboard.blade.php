@@ -1,36 +1,63 @@
-<div class="container">
+@extends('adminlte::page')
 
-<h2>Society Dashboard</h2>
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Society Dashboard</h1>
+@stop
+
+@section('content')
 
 <div class="row">
 
-<div class="col-md-3">
-<div class="card">
-<h4>Total Flats</h4>
-<p>{{ $flats }}</p>
+<div class="col-lg-3 col-6">
+<div class="small-box bg-info">
+<div class="inner">
+<h3>{{ $flats }}</h3>
+<p>Total Flats</p>
 </div>
+<div class="icon">
+<i class="fas fa-building"></i>
 </div>
-
-<div class="col-md-3">
-<div class="card">
-<h4>Total Members</h4>
-<p>{{ $members }}</p>
 </div>
 </div>
 
-<div class="col-md-3">
-<div class="card">
-<h4>Maintenance Collected</h4>
-<p>{{ $maintenance }}</p>
+<div class="col-lg-3 col-6">
+<div class="small-box bg-success">
+<div class="inner">
+<h3>{{ $members }}</h3>
+<p>Total Members</p>
 </div>
+<div class="icon">
+<i class="fas fa-users"></i>
 </div>
-
-<div class="col-md-3">
-<div class="card">
-<h4>Pending Complaints</h4>
-<p>{{ $complaints }}</p>
 </div>
 </div>
 
+<div class="col-lg-3 col-6">
+<div class="small-box bg-warning">
+<div class="inner">
+<h3>{{ $maintenance }}</h3>
+<p>Maintenance Collected</p>
+</div>
+<div class="icon">
+<i class="fas fa-money-bill"></i>
 </div>
 </div>
+</div>
+
+<div class="col-lg-3 col-6">
+<div class="small-box bg-danger">
+<div class="inner">
+<h3>{{ $complaints }}</h3>
+<p>Pending Complaints</p>
+</div>
+<div class="icon">
+<i class="fas fa-exclamation-triangle"></i>
+</div>
+</div>
+</div>
+
+</div>
+
+@stop
