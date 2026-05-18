@@ -14,9 +14,11 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-COPY . .
+COPY composer.json composer.lock ./
 
 RUN composer install --ignore-platform-reqs --no-dev --optimize-autoloader
+
+COPY . .
 
 RUN npm install
 RUN npm run build
