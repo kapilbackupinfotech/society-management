@@ -23,6 +23,7 @@ RUN npm run build
 
 RUN php artisan config:clear || true
 RUN php artisan cache:clear || true
+RUN php artisan view:clear || true
 
 EXPOSE 10000
 
