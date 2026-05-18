@@ -12,21 +12,17 @@ RUN apt-get update && apt-get install -y \
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /app
+WORKDIR /var/www
 
-COPY composer.json composer.lock ./
+COPY . /var/www
 
 RUN composer install --ignore-platform-reqs --no-dev --optimize-autoloader
-
-COPY . .
 
 RUN npm install
 RUN npm run build
 
-RUN php artisan config:clear || true
-RUN php artisan cache:clear || true
-RUN php artisan view:clear || true
+RUN php artisan optimize:clear || true
 
 EXPOSE 10000
 
-CMD php artisan serve --host=0.0.0.0 --port=10000
+CMD php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=10000
